@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'com.celeste'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile 'net.dv8tion:JDA:4.2.0_222'
+    compile 'org.projectlombok:lombok:1.18.10'
+
+    implementation 'com.zaxxer:HikariCP:3.4.5'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+}
+
+test {
+    systemProperty "file.encoding", "utf-8"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
