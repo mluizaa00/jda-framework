@@ -3,12 +3,13 @@ plugins {
 }
 
 group 'com.luizaprestes'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
     mavenLocal()
     jcenter()
+
 }
 
 dependencies {
@@ -16,6 +17,7 @@ dependencies {
     compile 'org.projectlombok:lombok:1.18.10'
 
     implementation 'com.zaxxer:HikariCP:3.4.5'
+    implementation 'net.oneandone.reflections8:reflections8:0.11.7'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }

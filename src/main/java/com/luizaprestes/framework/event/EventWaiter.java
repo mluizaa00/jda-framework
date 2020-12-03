@@ -1,4 +1,4 @@
-package com.luizaprestes.event;
+package com.luizaprestes.framework.event;
 
 import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -58,17 +58,16 @@ public class EventWaiter implements EventListener {
     public final void onEvent(GenericEvent event) {
         Class eventClass = event.getClass();
 
-        while(eventClass != null) {
-            if(waitingEvents.containsKey(eventClass)) {
+        while (eventClass != null) {
+            if (waitingEvents.containsKey(eventClass)) {
                 Set<WaitingEvent> set = waitingEvents.get(eventClass);
                 WaitingEvent[] toRemove = set.toArray(new WaitingEvent[set.size()]);
 
                 set.removeAll(Stream.of(toRemove).filter(i -> i.attempt(event)).collect(Collectors.toSet()));
             }
-            if(event instanceof ShutdownEvent && shutdownAutomatically)
-            {
-                threadPool.shutdown();
-            }
+
+            if (event instanceof ShutdownEvent && shutdownAutomatically) threadPool.shutdown();
+
             eventClass = eventClass.getSuperclass();
         }
     }

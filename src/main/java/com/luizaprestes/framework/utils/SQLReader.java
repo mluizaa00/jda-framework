@@ -1,4 +1,4 @@
-package com.luizaprestes.utils;
+package com.luizaprestes.framework.utils;
 
 import java.io.*;
 import java.net.URI;

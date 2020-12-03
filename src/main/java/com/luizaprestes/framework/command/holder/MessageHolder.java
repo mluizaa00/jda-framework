@@ -1,6 +1,8 @@
-package com.luizaprestes.command.holder;
+package com.luizaprestes.framework.command.holder;
 
 import lombok.Data;
+
+import java.util.function.Consumer;
 
 @Data
 public class MessageHolder {
@@ -13,5 +15,10 @@ public class MessageHolder {
         this.withoutPerm = "You don't have enough permission to do that.";
         this.withoutRoles = "You don't have the roles for this command.";
         this.invalidArgs = "Incorrect usage! Use: {usage}";
+    }
+
+    public MessageHolder acceptHolder(Consumer<MessageHolder> consumer) {
+        consumer.accept(this);
+        return this;
     }
 }

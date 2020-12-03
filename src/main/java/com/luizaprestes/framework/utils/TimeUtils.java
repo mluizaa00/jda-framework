@@ -1,4 +1,4 @@
-package com.luizaprestes.utils;
+package com.luizaprestes.framework.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

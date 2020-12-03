@@ -1,9 +1,9 @@
-package com.luizaprestes.example;
+package com.luizaprestes.example.command;
 
-import com.luizaprestes.command.CommandContext;
-import com.luizaprestes.command.annotation.Command;
-import com.luizaprestes.command.annotation.CommandInfo;
-import com.luizaprestes.utils.EmbedCreator;
+import com.luizaprestes.framework.command.frame.impl.CommandContext;
+import com.luizaprestes.framework.command.annotation.Command;
+import com.luizaprestes.framework.command.annotation.CommandInfo;
+import com.luizaprestes.framework.utils.EmbedCreator;
 import net.dv8tion.jda.api.entities.TextChannel;
 import java.awt.Color;
 
@@ -18,20 +18,12 @@ public class PingCommand {
         name = "ping"
     )
     public void handlePingCommand(CommandContext context) {
-        final TextChannel channel = context.getEventSource().getTextChannel();
+        final TextChannel channel = context.getEventSource().getChannel();
 
         channel.sendMessage(new EmbedCreator("Ping")
           .description("Pong!")
           .color(Color.RED)
           .build()
-        );
+        ).queue();
     }
-
-    @Command(
-      name = "ping.pong"
-    )
-    public void handlePingPongCommand(CommandContext context) {
-
-    }
-
 }

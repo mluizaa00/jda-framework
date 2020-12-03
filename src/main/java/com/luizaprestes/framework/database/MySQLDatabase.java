@@ -1,4 +1,4 @@
-package com.luizaprestes.database;
+package com.luizaprestes.framework.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

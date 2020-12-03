@@ -1,4 +1,4 @@
-package com.luizaprestes.command.annotation;
+package com.luizaprestes.framework.command.annotation;
 
 import net.dv8tion.jda.api.Permission;
 

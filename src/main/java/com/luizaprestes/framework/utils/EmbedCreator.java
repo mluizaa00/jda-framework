@@ -1,11 +1,14 @@
-package com.luizaprestes.utils;
+package com.luizaprestes.framework.utils;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.awt.Color;
 
-
+/*
+* @author luizaprestes
+* @since 2020-03-12
+*/
 public class EmbedCreator {
 
     private final EmbedBuilder builder = new EmbedBuilder();

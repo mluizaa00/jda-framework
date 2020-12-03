@@ -1,11 +1,11 @@
 package com.luizaprestes.example;
 
-import com.luizaprestes.command.client.CommandClient;
-import com.luizaprestes.command.client.CommandFrame;
-import com.luizaprestes.command.client.impl.CommandClientImpl;
-import com.luizaprestes.command.holder.MessageHolder;
-import com.luizaprestes.database.MySQLDatabase;
-import com.luizaprestes.event.EventWaiter;
+import com.luizaprestes.example.service.UserService;
+import com.luizaprestes.framework.command.CommandFrame;
+import com.luizaprestes.framework.command.frame.CommandClient;
+import com.luizaprestes.framework.command.holder.MessageHolder;
+import com.luizaprestes.framework.database.MySQLDatabase;
+import com.luizaprestes.framework.event.EventWaiter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -15,49 +15,30 @@ import javax.security.auth.login.LoginException;
 
 public class MainExample {
 
-    private static JDA jda;
-    private static final EventWaiter eventWaiter = new EventWaiter();
-
     public static void main(String[] args) throws LoginException {
-        connectMySQL();
-
-        jda = JDABuilder.createLight("token")
+        final JDA jda = JDABuilder.createLight("NzMxOTM2OTc0ODQ3NjA2ODE2.XwtTbQ.cGKG0bgPGhzj8tmPhDMt9k9tSpM")
           .setAutoReconnect(true)
           .setStatus(OnlineStatus.ONLINE)
           .setActivity(Activity.playing("JDA!"))
           .build();
 
+        final EventWaiter waiter = new EventWaiter();
+        jda.addEventListener(waiter);
+
+        buildClient(jda);
     }
 
-    public static void buildClient() {
-        final CommandFrame frame = new CommandFrame();
-        final MessageHolder holder = new MessageHolder();
+    public static void buildClient(final JDA jda) {
+        final CommandFrame frame = new CommandFrame("-", null);
+        frame.getMessageHolder().acceptHolder(holder -> {
+           holder.setInvalidArgs("MEU CU");
+           holder.setWithoutPerm("VAI SE FUDER");
+           holder.setWithoutRoles("ROLA");
+        });
 
-        holder.setInvalidArgs("Example of invalid args message");
-        holder.setWithoutPerm("Example of without permissions message");
-        holder.setWithoutRoles("Example of without roles message");
-        /*
-            DEFAULT MESSAGES FOR THE HOLDER : ENGLISH
-         */
-        holder.setupDefault();
+        frame.loadCommands(MainExample.class);
 
-        frame.setPrefix("-");
-        frame.setMessageHolder(holder);
-
-        CommandClientImpl commandClient = frame.build();
-
-        jda.addEventListener(
-          eventWaiter,
-          commandClient
-        );
-
-    }
-
-    public static void connectMySQL() {
-        MySQLDatabase mySQL = new MySQLDatabase();
-        mySQL.connect(
-          "jdbc:mysql://localhost:3306/test",
-          "root",
-          "");
+        CommandClient commandClient = frame.build();
+        commandClient.register(jda);
     }
 }

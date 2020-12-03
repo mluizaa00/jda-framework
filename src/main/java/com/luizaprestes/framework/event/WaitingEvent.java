@@ -1,4 +1,4 @@
-package com.luizaprestes.event;
+package com.luizaprestes.framework.event;
 
 import net.dv8tion.jda.api.events.GenericEvent;
 
