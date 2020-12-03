@@ -1,6 +1,6 @@
-package com.celeste.command;
+package com.luizaprestes.command;
 
-import com.celeste.command.client.impl.CommandFrameImpl;
+import com.luizaprestes.command.client.impl.CommandClientImpl;
 import lombok.Data;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -8,11 +8,11 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 public class CommandContext {
 
     private final MessageReceivedEvent eventSource;
-    private final CommandFrameImpl client;
+    private final CommandClientImpl client;
 
     private String args;
 
-    public CommandContext(MessageReceivedEvent eventSource, String args, CommandFrameImpl client) {
+    public CommandContext(MessageReceivedEvent eventSource, String args, CommandClientImpl client) {
         this.eventSource = eventSource;
         this.args = args == null ? "" : args;
         this.client = client;

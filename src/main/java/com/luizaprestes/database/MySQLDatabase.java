@@ -1,4 +1,4 @@
-package com.celeste.database;
+package com.luizaprestes.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

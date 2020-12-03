@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.celeste'
+group 'com.luizaprestes'
 version '1.0-SNAPSHOT'
 
 repositories {

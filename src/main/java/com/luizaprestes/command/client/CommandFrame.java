@@ -1,9 +1,9 @@
-package com.celeste.command.client;
+package com.luizaprestes.command.client;
 
-import com.celeste.command.client.impl.CommandFrameImpl;
-import com.celeste.command.model.CommandModel;
-import com.celeste.command.client.impl.CommandClientImpl;
-import com.celeste.command.holder.MessageHolder;
+import com.luizaprestes.command.client.impl.CommandClientImpl;
+import com.luizaprestes.command.client.impl.CommandListener;
+import com.luizaprestes.command.model.CommandModel;
+import com.luizaprestes.command.holder.MessageHolder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,8 +18,8 @@ public class CommandFrame {
     private CommandListener listener;
     private MessageHolder messageHolder;
 
-    public CommandFrameImpl build() {
-        CommandFrameImpl client = new CommandClientImpl(
+    public CommandClientImpl build() {
+        CommandClientImpl client = new CommandClient(
           getPrefix(),
           getCommands(),
           getListener(),

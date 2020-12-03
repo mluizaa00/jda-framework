@@ -1,4 +1,4 @@
-package com.celeste.utils;
+package com.luizaprestes.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,10 +20,10 @@ public class TimeUtils {
     }
 
     public static int parseTimeAmount(String time) {
-        char[] t = time.toCharArray();
+        final char[] t = time.toCharArray();
+        final StringBuilder amount = new StringBuilder();
 
         int breakPoint = 0;
-        String amount = "";
 
         for (int i=0; i < t.length; i++) {
             switch (t[i]) {
@@ -36,14 +36,14 @@ public class TimeUtils {
             }
         }
         for (int i = 0; i < breakPoint; i++) {
-            amount += t[i];
+            amount.append(t[i]);
         }
-        return Integer.parseInt(amount);
+        return Integer.parseInt(amount.toString());
     }
 
     public static TimeUnit parseTimeUnit(String time) {
         TimeUnit timeUnit = TimeUnit.SECONDS;
-        char[] timeChar = time.toCharArray();
+        final char[] timeChar = time.toCharArray();
 
         for (char c : timeChar) {
             switch (c) {

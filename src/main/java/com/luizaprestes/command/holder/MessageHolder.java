@@ -1,4 +1,4 @@
-package com.celeste.command.holder;
+package com.luizaprestes.command.holder;
 
 import lombok.Data;
 

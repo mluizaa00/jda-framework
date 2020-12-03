@@ -1,4 +1,4 @@
-package com.celeste.command.model;
+package com.luizaprestes.command.model;
 
 import lombok.Data;
 import net.dv8tion.jda.api.Permission;

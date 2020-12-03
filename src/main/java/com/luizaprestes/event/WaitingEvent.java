@@ -1,4 +1,4 @@
-package com.celeste.utils;
+package com.luizaprestes.event;
 
 import net.dv8tion.jda.api.events.GenericEvent;
 

@@ -1,8 +1,9 @@
-package com.celeste.command.client.impl;
+package com.luizaprestes.command.client;
 
-import com.celeste.command.client.CommandListener;
-import com.celeste.command.model.CommandModel;
-import com.celeste.command.holder.MessageHolder;
+import com.luizaprestes.command.client.impl.CommandListener;
+import com.luizaprestes.command.client.impl.CommandClientImpl;
+import com.luizaprestes.command.model.CommandModel;
+import com.luizaprestes.command.holder.MessageHolder;
 import lombok.Getter;
 import lombok.Setter;
 import net.dv8tion.jda.api.events.ReadyEvent;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 
 @Getter
 @Setter
-public class CommandClientImpl implements CommandFrameImpl, EventListener {
+public class CommandClient implements CommandClientImpl, EventListener {
 
     private String prefix;
     private LinkedList<CommandModel> commands;
@@ -22,7 +23,7 @@ public class CommandClientImpl implements CommandFrameImpl, EventListener {
 
     private final HashMap<String, Integer> commandIndex;
 
-    public CommandClientImpl(String prefix, LinkedList<CommandModel> commands, CommandListener listener, MessageHolder holder) {
+    public CommandClient(String prefix, LinkedList<CommandModel> commands, CommandListener listener, MessageHolder holder) {
         this.prefix = prefix;
         this.commands = commands;
         this.listener = listener;

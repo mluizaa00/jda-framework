@@ -1,4 +1,4 @@
-package com.celeste.command.annotation;
+package com.luizaprestes.command.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

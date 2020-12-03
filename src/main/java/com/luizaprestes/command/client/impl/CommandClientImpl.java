@@ -1,11 +1,10 @@
-package com.celeste.command.client.impl;
+package com.luizaprestes.command.client.impl;
 
-import com.celeste.command.model.CommandModel;
-import com.celeste.command.client.CommandListener;
+import com.luizaprestes.command.model.CommandModel;
 
 import java.util.List;
 
-public interface CommandFrameImpl {
+public interface CommandClientImpl {
 
     String getPrefix();
 

@@ -1,4 +1,4 @@
-package com.celeste.command.annotation;
+package com.luizaprestes.command.annotation;
 
 import net.dv8tion.jda.api.Permission;
 
