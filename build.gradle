@@ -1,29 +1,29 @@
 plugins {
     id 'java'
-    id "com.github.johnrengelman.shadow" version "6.1.0"
+    id 'maven'
 }
 
 group 'com.luizaprestes'
-version '1.0.0'
+version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-    jcenter()
-}
+allprojects {
+    afterEvaluate {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
 
-dependencies {
-    implementation 'com.zaxxer:HikariCP:3.4.5'
-    implementation 'net.dv8tion:JDA:4.2.0_222'
+        dependencies {
+            implementation 'com.zaxxer:HikariCP:3.4.5'
+            implementation 'net.dv8tion:JDA:4.2.0_222'
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-}
+            annotationProcessor 'org.projectlombok:lombok:1.18.10'
+            compileOnly 'org.projectlombok:lombok:1.18.10'
+        }
+    }
 
-test {
-    systemProperty "file.encoding", "utf-8"
-}
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 }

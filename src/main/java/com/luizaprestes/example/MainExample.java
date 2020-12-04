@@ -30,7 +30,6 @@ public class MainExample {
           "!", "-"
         });
 
-
         frame.getMessageHolder().setMessage(MessageType.LACK_PERM_MESSAGE, "Custom message :s");
 
         frame.loadCommands(new PingCommand());
