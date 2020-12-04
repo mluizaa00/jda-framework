@@ -6,18 +6,19 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.awt.*;
+import java.util.Arrays;
 
 public class PingCommand {
 
     @Command(
       name = "ping"
     )
-    public void handlePingCommand(final Message message, String[] args) {
-        final TextChannel channel = message.getTextChannel();
+    public void handlePingCommand(Message context, String[] args) {
+        final TextChannel channel = context.getTextChannel();
 
         channel.sendMessage(new EmbedCreator("Ping")
           .description("Pong!")
-          .color(Color.RED)
+          .color(Color.ORANGE)
           .build()
         ).queue();
     }

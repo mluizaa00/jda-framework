@@ -1,23 +1,8 @@
 package com.luizaprestes.framework.utils;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class TimeUtils {
-
-    public static String transformDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
-        sdf.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
-        return sdf.format(date);
-    }
-
-    public static String transformHour(Date data) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        sdf.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
-        return sdf.format(data);
-    }
 
     public static int parseTimeAmount(String time) {
         final char[] t = time.toCharArray();

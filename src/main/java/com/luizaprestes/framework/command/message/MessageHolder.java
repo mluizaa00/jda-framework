@@ -8,7 +8,7 @@ public class MessageHolder {
     private final Map<MessageType, String> messageMap;
 
     public MessageHolder() {
-        this.messageMap = new HashMap<MessageType, String>(){{
+        this.messageMap = new HashMap<>() {{
             for (MessageType value : MessageType.values()) {
                 put(value, value.getDefaultMessage());
             }

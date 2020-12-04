@@ -13,5 +13,5 @@ public abstract class CommandModel {
     private final Permission[] permissions;
     private final long role;
 
-    public abstract void onCommand(final Message message, final String[] args);
+    public abstract void onCommand(final Message context, final String[] args);
 }

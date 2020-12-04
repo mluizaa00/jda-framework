@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.entities.Message;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 
 public class CommandLoader {
 
@@ -19,10 +20,9 @@ public class CommandLoader {
     public void load(final CommandFrame frame, final Object holder) {
         for (Method method : holder.getClass().getMethods()) {
             final Command annotation = method.getAnnotation(Command.class);
-            if(annotation == null) continue;
+            if (annotation == null) continue;
 
-            if (method.getReturnType() != Void.TYPE
-              || method.getParameterTypes() != CLASSES
+            if (!Arrays.equals(method.getParameterTypes(), CLASSES)
               || !Modifier.isPublic(method.getModifiers())
             ) continue;
 
@@ -33,9 +33,9 @@ public class CommandLoader {
               annotation.role()
             ) {
                 @Override
-                public void onCommand(Message message, String[] args) {
+                public void onCommand(Message context, String[] args) {
                     try {
-                        method.invoke(holder, message, args);
+                        method.invoke(holder, context, args);
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }

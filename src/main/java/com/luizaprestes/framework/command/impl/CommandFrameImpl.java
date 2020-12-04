@@ -31,7 +31,7 @@ public class CommandFrameImpl implements CommandFrame {
     @Override
     public CommandModel getCommand(String name) {
         for (CommandModel model : commandSet) {
-            if(model.getName().equalsIgnoreCase(name)) {
+            if (model.getName().equalsIgnoreCase(name)) {
                 return model;
             }
 
@@ -48,6 +48,8 @@ public class CommandFrameImpl implements CommandFrame {
     @Override
     public void loadCommands(Object... holders) {
         for (Object holder : holders) {
+            System.out.println(holder.getClass().getSimpleName());
+
             loader.load(this, holder);
         }
     }

@@ -14,12 +14,14 @@ import javax.security.auth.login.LoginException;
 
 public class MainExample {
 
-    public static void main(String[] args) throws LoginException {
-        final JDA jda = JDABuilder.createLight("YOUR TOKEN HERE")
+    public static void main(String[] args) throws LoginException, InterruptedException {
+        final JDA jda = JDABuilder.createLight("NzMxOTM2OTc0ODQ3NjA2ODE2.XwtTbQ.cGKG0bgPGhzj8tmPhDMt9k9tSpM")
           .setAutoReconnect(true)
           .setStatus(OnlineStatus.ONLINE)
           .setActivity(Activity.playing("JDA!"))
           .build();
+
+        jda.awaitReady();
 
         final EventWaiter waiter = new EventWaiter();
         jda.addEventListener(waiter);
@@ -27,6 +29,7 @@ public class MainExample {
         final CommandFrame frame = new CommandFrameImpl(new String[]{
           "!", "-"
         });
+
 
         frame.getMessageHolder().setMessage(MessageType.LACK_PERM_MESSAGE, "Custom message :s");
 
