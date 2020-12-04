@@ -1,22 +1,17 @@
 package com.luizaprestes.framework.command.model;
 
-import com.luizaprestes.framework.command.frame.impl.CommandContext;
 import lombok.Data;
 import net.dv8tion.jda.api.Permission;
-
-import java.lang.reflect.InvocationTargetException;
+import net.dv8tion.jda.api.entities.Message;
 
 @Data
 public abstract class CommandModel {
 
-    private String name;
-    private String[] aliases;
+    private final String name;
+    private final String[] aliases;
 
-    private String requiredRole;
-    private Permission[] userPermissions;
+    private final Permission[] permissions;
+    private final long role;
 
-    public CommandModel(String name, String[] aliases, String requiredRole, Permission[] userPermissions) {
-    }
-
-    public abstract void execute(CommandContext context, String[] args) throws InvocationTargetException, IllegalAccessException;
+    public abstract void onCommand(final Message message, final String[] args);
 }
