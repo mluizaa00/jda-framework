@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
 group 'com.luizaprestes'
@@ -9,17 +10,14 @@ repositories {
     mavenCentral()
     mavenLocal()
     jcenter()
-
 }
 
 dependencies {
-    compile 'net.dv8tion:JDA:4.2.0_222'
-    compile 'org.projectlombok:lombok:1.18.10'
-
     implementation 'com.zaxxer:HikariCP:3.4.5'
-    implementation 'net.oneandone.reflections8:reflections8:0.11.7'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compileOnly 'net.dv8tion:JDA:4.2.0_222'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
 }
 
 test {

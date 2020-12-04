@@ -1,10 +1,9 @@
 package com.luizaprestes.example;
 
-import com.luizaprestes.example.service.UserService;
+import com.luizaprestes.example.command.PingCommand;
 import com.luizaprestes.framework.command.CommandFrame;
-import com.luizaprestes.framework.command.frame.CommandClient;
-import com.luizaprestes.framework.command.holder.MessageHolder;
-import com.luizaprestes.framework.database.MySQLDatabase;
+import com.luizaprestes.framework.command.impl.CommandFrameImpl;
+import com.luizaprestes.framework.command.message.MessageType;
 import com.luizaprestes.framework.event.EventWaiter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,7 +15,7 @@ import javax.security.auth.login.LoginException;
 public class MainExample {
 
     public static void main(String[] args) throws LoginException {
-        final JDA jda = JDABuilder.createLight("NzMxOTM2OTc0ODQ3NjA2ODE2.XwtTbQ.cGKG0bgPGhzj8tmPhDMt9k9tSpM")
+        final JDA jda = JDABuilder.createLight("YOUR TOKEN HERE")
           .setAutoReconnect(true)
           .setStatus(OnlineStatus.ONLINE)
           .setActivity(Activity.playing("JDA!"))
@@ -25,20 +24,14 @@ public class MainExample {
         final EventWaiter waiter = new EventWaiter();
         jda.addEventListener(waiter);
 
-        buildClient(jda);
-    }
-
-    public static void buildClient(final JDA jda) {
-        final CommandFrame frame = new CommandFrame("-", null);
-        frame.getMessageHolder().acceptHolder(holder -> {
-           holder.setInvalidArgs("MEU CU");
-           holder.setWithoutPerm("VAI SE FUDER");
-           holder.setWithoutRoles("ROLA");
+        final CommandFrame frame = new CommandFrameImpl(new String[]{
+          "!", "-"
         });
 
-        frame.loadCommands(MainExample.class);
+        frame.getMessageHolder().setMessage(MessageType.LACK_PERM_MESSAGE, "Custom message :s");
 
-        CommandClient commandClient = frame.build();
-        commandClient.register(jda);
+        frame.loadCommands(new PingCommand());
+        frame.build(jda);
     }
+
 }
