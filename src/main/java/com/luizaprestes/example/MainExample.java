@@ -15,7 +15,7 @@ import javax.security.auth.login.LoginException;
 public class MainExample {
 
     public static void main(String[] args) throws LoginException, InterruptedException {
-        final JDA jda = JDABuilder.createLight("NzMxOTM2OTc0ODQ3NjA2ODE2.XwtTbQ.cGKG0bgPGhzj8tmPhDMt9k9tSpM")
+        final JDA jda = JDABuilder.createLight("YOUR_TOKEN_HERE")
           .setAutoReconnect(true)
           .setStatus(OnlineStatus.ONLINE)
           .setActivity(Activity.playing("JDA!"))
