@@ -14,4 +14,5 @@ public abstract class CommandModel {
     private final long role;
 
     public abstract void onCommand(final Message context, final String[] args);
+
 }

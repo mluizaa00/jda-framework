@@ -17,4 +17,5 @@ public interface CommandFrame {
     MessageHolder getMessageHolder();
 
     void build(JDA jda);
+
 }
