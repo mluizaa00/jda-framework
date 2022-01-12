@@ -1,29 +1,27 @@
 plugins {
-    id 'java'
-    id 'maven'
+    id "java"
 }
 
-group 'com.luizaprestes'
-version '1.0-SNAPSHOT'
+group "com.luizaprestes"
+version "1.0.0-SNAPSHOT"
 
-allprojects {
-    afterEvaluate {
-        repositories {
-            mavenCentral()
-            jcenter()
-        }
+repositories {
+    mavenCentral()
 
-        dependencies {
-            implementation 'com.zaxxer:HikariCP:3.4.5'
-            implementation 'net.dv8tion:JDA:4.2.0_222'
-
-            annotationProcessor 'org.projectlombok:lombok:1.18.10'
-            compileOnly 'org.projectlombok:lombok:1.18.10'
-        }
-    }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
-    }
-
+    maven { url "https://m2.dv8tion.net/releases" }
 }
+
+dependencies {
+    compileOnly "net.dv8tion:JDA:4.4.0_352"
+
+    def lombok = "org.projectlombok:lombok:1.18.22"
+
+    annotationProcessor lombok
+    compileOnly lombok
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
