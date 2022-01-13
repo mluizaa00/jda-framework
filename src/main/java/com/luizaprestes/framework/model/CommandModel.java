@@ -1,4 +1,4 @@
-package com.luizaprestes.framework.command.model;
+package com.luizaprestes.framework.model;
 
 import lombok.Data;
 import net.dv8tion.jda.api.Permission;

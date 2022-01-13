@@ -1,4 +1,4 @@
-package com.luizaprestes.framework.command.message;
+package com.luizaprestes.framework.model.message;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,4 +10,5 @@ public enum MessageType {
     LACK_PERM_MESSAGE("You don't have sufficient permissions to do this.");
 
     private final String defaultMessage;
+
 }
